@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+{% block title %} AWS S3 File Storage App{% endblock %}
+{% block navbar %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My flask application - Login Page</title>
+</head>
+
+<body>
+      <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="/storage">Storage</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">This is your login page girl!</h3>
+      </div>
+  
+    {{msg}}
+    <div class="login-clean">
+        
+        <form method="post" action="/check">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-navigate" style="color:#aedc8a;"></i></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group">
+             <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block" style="background-color:#aedc8a;color:rgb(40,140,38);">
+            </div>
+            <a href="#" class="forgot">Forgot your email or password?</a>
+        </form>
+    </div>
+    
+</body>
+
+</html>
+
+
+
+{% endblock %}
