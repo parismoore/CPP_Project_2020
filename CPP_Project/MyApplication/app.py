@@ -4,7 +4,7 @@ import os
 
 import boto3 
 
-from flask import Flask, render_template, request, redirect, send_file, url_for
+from flask import Flask, flash, render_template, request, redirect, send_file, url_for
 
 from s3_demo import list_files, download_file, upload_file
 
@@ -24,11 +24,11 @@ from boto3.dynamodb.conditions import Key, Attr
 
 @app.route('/')
 def entry_point():
-    return render_template('index.html') #this is your landing page to Sign up
+    return render_template('registration.html') #this is your landing page to Sign up
     #return 'Hello World!'
 
-@app.route('/signup', methods=['post'])
-def signup():
+@app.route('/registration', methods=['post', 'GET'])
+def registration():
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -43,10 +43,10 @@ def signup():
         'password': password
             }
         )
-        msg = "Registration Complete. Please Login to your account !"
+        msg = "Registration Complete. Please Login to your account"
     
         return render_template('login.html',msg = msg)
-    return render_template('index.html')
+    return render_template('registration.html')
     
     
 
@@ -54,9 +54,12 @@ def signup():
 def login():    
     return render_template('login.html')
 
+@app.route('/main')
+def main():    
+    return render_template('main.html')
 
-@app.route('/check',methods = ['post']) #This is my main page but when I check to to /main, I get an error not
-def main():
+@app.route('/check',methods = ['post']) #This is my main page but when I change /check to to /main, I get an error 
+def check():
     if request.method=='POST':
         
         email = request.form['email']
