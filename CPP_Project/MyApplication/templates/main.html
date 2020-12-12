@@ -1,5 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %} AWS S3 File Storage App{% endblock %}
+{% block title %} News Wire {% endblock %}
 {% block navbar %}
 
 <!DOCTYPE html>
@@ -13,24 +13,18 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation" class="active"><a href="/main">Main</a></li>
-            <li role="presentation"><a href="">Upload</a></li>
+            <li role="presentation"><a href="/upload">Upload</a></li>
             <li role="presentation"><a href="/storage">Storage</a></li>
-            <li role="presentation"><a href="">Form</a></li>
+            <li role="presentation"><a href="/form">Form</a></li>
             <li role="presentation"><a href="/login">Log Out</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">AWS S3 Storage App</h3>
       </div>
 
-    
-      <div class="jumbotron">
-          
-        <h3>Welcome S3 File Uploaders</h3>
-    
-        <p>THIS IS YOUR MAIN PAGE WITH AWS S3</p>
-    
+ <div class="jumbotron">
+        <h3>Image Upload</h3>
         <h2> {{ msg }}</h2>
-    
         <div>
           <h1>Upload your file here:</h1>
           <form method="POST" action="/upload" enctype=multipart/form-data>
@@ -38,11 +32,6 @@
             <input type=submit value=Upload>
           </form>
         </div>
-    
-        
-        
-        
-       
       </div>
 
       <footer class="footer">

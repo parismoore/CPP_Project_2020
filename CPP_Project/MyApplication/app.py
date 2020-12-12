@@ -6,7 +6,7 @@ import boto3
 
 from flask import Flask, flash, render_template, request, redirect, send_file, url_for
 
-from s3_demo import list_files, download_file, upload_file
+from s3 import list_files, download_file, upload_file
 
 from flask_bootstrap import Bootstrap
 
@@ -57,6 +57,10 @@ def login():
 @app.route('/main')
 def main():    
     return render_template('main.html')
+    
+@app.route('/form')
+def form():
+    return render_template('form.html')
 
 @app.route('/check',methods = ['post']) #This is my main page but when I change /check to to /main, I get an error 
 def check():
@@ -91,6 +95,7 @@ def storage():
 @app.route("/upload", methods=['POST'])
 def upload():
     if request.method == "POST":
+        #if request.files['file']:
         f = request.files['file']
         f.save(f.filename)
         upload_file(f"{f.filename}", BUCKET)
@@ -98,7 +103,7 @@ def upload():
         return redirect("/storage")
 
 
-@app.route("/download/<filename>", methods=['GET'])
+@app.route("/<filename>", methods=['GET'])
 def download(filename):
     if request.method == 'GET':
         output = download_file(filename, BUCKET)

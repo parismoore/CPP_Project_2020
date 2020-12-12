@@ -1,13 +1,9 @@
 {% extends "bootstrap/base.html" %}
-{% block title %} AWS S3 File Storage App{% endblock %}
+{% block title %} News Wire {% endblock %}
 {% block navbar %}
 
 <!DOCTYPE html>
 <html lang="en">
- 
-
- 
-
   <body>
 
      <div class="container">
@@ -17,47 +13,55 @@
             <li role="presentation"><a href="/main">Main</a></li>
             <li role="presentation"><a href="">Upload</a></li>
             <li role="presentation" class="active"><a href="/storage">Storage</a></li>
-            <li role="presentation"><a href="">Form</a></li>
+            <li role="presentation"><a href="/form">Form</a></li>
             <li role="presentation"><a href="/login">Log Out</a></li>
           </ul>
         </nav>
-        <h3 class="text-muted">AWS S3 Storage App</h3>
+        <h3 class="text-muted">Image Bucket</h3>
       </div>
 
       <div class="jumbotron">
-        <h3>S3 App Demo</h3>
-    
-        <p>Welcome to this AWS S3 Demo</p>
-    
         <h2> {{ msg }}</h2>
-    
-        <div>
-          <h1>Upload your file here:</h1>
-          <form method="POST" action="/upload" enctype=multipart/form-data>
-            <input type=file name=file>
-            <input type=submit value=Upload>
-          </form>
-        </div>
-        
         <div>
           <h3>These are your uploaded files:</h3>
-          <p>Click on the filename to download it.</p>
           <ul>
             {% for item in contents %}
               <li>
-                <a href="/download/{{ item.Key }}"> {{ item.Key }} </a>
+                <a href="/{{ item.Key }}"> {{ item.Key }} </a>
               </li>
             {% endfor %}
+            <br/>
+            <button onclick="location.href = '/main';" id="myButton" class="float-left submit-button" >Upload more files</button>
           </ul>
-    
         </div>
         
-        
-        
-        
-       
-        
       </div>
+      
+  <div class="album py-5 bg-light">
+    <div class="container">
+      {% for item in contents %}
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img src="{{ item.image }}" style="width:100%;height:100%;"/>
+            <div class="card-body">
+              <p class="card-text">{{ item.Key }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/{{ item.Key }}">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
+                  </a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+        
 
       <footer class="footer">
         <p>&copy; Paris Moore x14485758 Cloud Computing Programming</p>
