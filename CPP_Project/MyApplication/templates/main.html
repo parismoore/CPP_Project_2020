@@ -1,55 +1,28 @@
-{% extends "bootstrap/base.html" %}
-{% block title %} News Wire {% endblock %}
-{% block navbar %}
+{% extends "storage.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
 
-  <body>
 
+
+
+  <div class="album py-5 bg-light">
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="/main">Main</a></li>
-            <li role="presentation"><a href="/upload">Upload</a></li>
-            <li role="presentation"><a href="/storage">Storage</a></li>
-            <li role="presentation"><a href="/form">Form</a></li>
-            <li role="presentation"><a href="/login">Log Out</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">AWS S3 Storage App</h3>
-      </div>
-
- <div class="jumbotron">
-        <h3>Image Upload</h3>
-        <h2> {{ msg }}</h2>
-        <div>
-          <h1>Upload your file here:</h1>
-          <form method="POST" action="/upload" enctype=multipart/form-data>
-            <input type=file name=file>
-            <input type=submit value=Upload>
-          </form>
+      <div class="row">
+      {% for item in contents %}
+          
+          <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.Headline }}</h5>
+    <h6 class="card-title">{{ item.Subline }}</h6>
+    <p class="card-text">{{ item.BodyText }}</p>
+    
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+          {% endfor %}
         </div>
       </div>
-
-      <footer class="footer">
-        <p></p>
-      </footer>
-
-    </div> <!-- /container -->
-
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
-
-
-
-
-
-
-
-{% endblock %}
+    </div>
+    
+          {% endblock %}

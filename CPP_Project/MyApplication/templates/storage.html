@@ -1,24 +1,6 @@
-{% extends "bootstrap/base.html" %}
-{% block title %} News Wire {% endblock %}
-{% block navbar %}
+{% extends "layout.html" %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <body>
-
-     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="/main">Main</a></li>
-            <li role="presentation"><a href="">Upload</a></li>
-            <li role="presentation" class="active"><a href="/storage">Storage</a></li>
-            <li role="presentation"><a href="/form">Form</a></li>
-            <li role="presentation"><a href="/login">Log Out</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Image Bucket</h3>
-      </div>
 
       <div class="jumbotron">
         <h2> {{ msg }}</h2>
@@ -31,7 +13,7 @@
               </li>
             {% endfor %}
             <br/>
-            <button onclick="location.href = '/main';" id="myButton" class="float-left submit-button" >Upload more files</button>
+            <button onclick="location.href = '/upload';" id="myButton" class="float-left submit-button" >Upload more files</button>
           </ul>
         </div>
         
@@ -58,25 +40,13 @@
             </div>
           </div>
         </div>
-        {% endfor %}
+      
       </div>
     </div>
-        
+      {% endfor %}
 
-      <footer class="footer">
-        <p>&copy; Paris Moore x14485758 Cloud Computing Programming</p>
-      </footer>
 
     </div> <!-- /container -->
-
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    
-  </body>
-</html>
-
-<img src="https://s3app-600.s3.amazonaws.com/Photo+4.jpg">
-
 
 {% endblock %}
 

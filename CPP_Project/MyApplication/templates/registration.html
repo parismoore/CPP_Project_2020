@@ -1,30 +1,8 @@
-{% extends "bootstrap/base.html" %}
-{% block title %} News Wire {% endblock %}
-{% block navbar %}
+{% extends "layout.html" %}
 
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask Application - Index Page</title>
-</head>
-
-<body>
-   <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
-            <li role="presentation"><a href="/login">Login</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">It is your landing (index) page girl!</h3>
-      </div>
-
-            <form method="post" action = "/signup">
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+{% block content %}
+            <form method="post" action = "/registration">
+                <h2 class="text-center">Create an account.</h2>
                 <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name"></div>
                 <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
                 <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password "></div>
@@ -34,16 +12,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                <input type="submit" name="submit" value="Sign up" class="btn btn-primary btn-block" style="background-color:#aedc8a;color:rgb(40,140,38);">
+                <input type="submit" name="submit" value="Sign up" class="btn btn-primary btn-block">
                  </div>
-                <a href="#" class="already">You already have an account? Login here.</a>
+                <a href="/login" class="already">You already have an account? Login here.</a>
             </form>
-    </div>
-   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
-
-</html>
+  
 
 
 {% endblock %}
