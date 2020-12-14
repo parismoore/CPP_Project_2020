@@ -29,5 +29,27 @@
     </div>
   </form>
 </section>
+<br/>
+<h2>Top Headlines in Ireland</h2>
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for item in contents %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5><u>{{ item.source }}</u></h5>
+              <h6><strong>{{ item.title }}</strong></h6>
+              <p class="card-text">{{ item.description }}</p>
+              <a href="{{ item.url }}">
+                <input name="url" class="btn btn-primary" type="submit" value="View Article" />
+              </a>
+            </div>
+          </div>
+        </div>
+         {% endfor %}
+      </div>
+    </div>
+  </div>
       
 {% endblock %}

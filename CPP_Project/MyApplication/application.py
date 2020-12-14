@@ -5,6 +5,7 @@ from flask import Flask, flash, render_template, request, redirect, send_file, u
 from s3 import list_files, download_file, upload_file
 from flask_bootstrap import Bootstrap
 from welcome_pkg import welcome_properties #my library creation
+import requests
 
 
 
@@ -56,7 +57,19 @@ def main():
     
 @app.route('/form')
 def form():
-    return render_template('form.html')
+    newsurl = ('http://newsapi.org/v2/top-headlines?country=ie&apiKey=820ad7802a5046fc99f7e906f7817f1c')
+    response = requests.get(newsurl)
+    
+    news = []
+    for i in response.json()['articles']:
+        article = {}
+        article['source'] = str(i['source']['name']) + ": " + str(i['author'])
+        article['title'] = i['title']
+        article['description'] = i['description']
+        article['url'] = i['url']
+        news.append(article)
+    
+    return render_template('form.html', contents = news)
 
 @app.route('/check',methods = ['post']) 
 def check():
